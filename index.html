@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5F0E8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 35px 30px;
+      width: 380px;
+      border: 2px solid #3D2000;
+      box-shadow: 6px 6px 0px #3D2000;
+    }
+
+    h1 {
+      color: #3D2000;
+      margin-bottom: 5px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    p {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .output-box {
+      background-color: #F5F0E8;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 25px;
+      border: 1.5px solid #3D2000;
+    }
+
+    #password-output {
+      color: #3D2000;
+      font-family: 'Courier New', monospace;
+      font-size: 17px;
+      word-break: break-all;
+      display: block;
+    }
+
+    .options {
+      margin-bottom: 28px;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #3D2000;
+      font-size: 14px;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+
+    .options input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: #3D2000;
+      cursor: pointer;
+    }
+
+    #generate-btn {
+      width: 100%;
+      background-color: #3D2000;
+      color: #F5F0E8;
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #generate-btn:hover {
+      background-color: #5a3000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Password Generator</h1>
+    <p>Create a strong and secure password</p>
+
+    <div class="output-box">
+      <span id="password-output">Click generate...</span>
+    </div>
+
+    <div class="options">
+      <label>
+        <input type="checkbox" id="opt-uppercase" checked>
+        Include Uppercase (A-Z)
+      </label>
+      <label>
+        <input type="checkbox" id="opt-numbers" checked>
+        Include Numbers (0-9)
+      </label>
+      <label>
+        <input type="checkbox" id="opt-symbols">
+        Include Symbols (!@#$)
+      </label>
+    </div>
+
+    <button id="generate-btn">Generate Password</button>
+  </div>
+
+</body>
+</html>
