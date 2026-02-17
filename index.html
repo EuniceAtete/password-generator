@@ -125,6 +125,22 @@
 
     <button id="generate-btn">Generate Password</button>
   </div>
+  <script>
+  document.getElementById('generate-btn').addEventListener('click', function() {
+    var length = 16;
+    var chars = 'abcdefghijklmnopqrstuvwxyz';
 
+    if (document.getElementById('opt-uppercase').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (document.getElementById('opt-numbers').checked) chars += '0123456789';
+    if (document.getElementById('opt-symbols').checked) chars += '!@#$%^&*';
+
+    var password = '';
+    for (var i = 0; i < length; i++) {
+      password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    document.getElementById('password-output').textContent = password;
+  });
+</script>
 </body>
 </html>
