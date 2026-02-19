@@ -107,6 +107,7 @@
     <div class="output-box">
       <span id="password-output">Click generate...</span>
     </div>
+    <p id="copy-msg" style="display:none; color: #3D2000; font-size: 12px; margin-top: -18px; margin-bottom: 18px;">✅ Copied to clipboard!</p>
 
     <div class="options">
       <label>
@@ -141,6 +142,10 @@
 
     document.getElementById('password-output').textContent = password;
     navigator.clipboard.writeText(password);
+    var msg = document.getElementById('copy-msg');
+    msg.style.display = 'block';
+    setTimeout(function() { msg.style.display = 'none'; }, 2000);
+
   });
 </script>
 </body>
