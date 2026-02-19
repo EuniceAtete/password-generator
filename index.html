@@ -108,7 +108,7 @@
       <span id="password-output">Click generate...</span>
     </div>
     <p id="copy-msg" style="display:none; color: #3D2000; font-size: 12px; margin-top: -18px; margin-bottom: 18px;">✅ Copied to clipboard!</p>
-
+    <p id="strength" style="font-size: 13px; margin-bottom: 18px;"></p>
     <div class="options">
       <label>
         <input type="checkbox" id="opt-uppercase" checked>
@@ -146,6 +146,12 @@
     msg.style.display = 'block';
     setTimeout(function() { msg.style.display = 'none'; }, 2000);
 
+    var strength = '';
+    if (password.length >= 16 && chars.length > 60) strength = '💪 Strong';
+    else if (password.length >= 16 || chars.length > 40) strength = '👍 Medium';
+    else strength = '⚠️ Weak';
+
+document.getElementById('strength').textContent = strength;
   });
 </script>
 </body>
