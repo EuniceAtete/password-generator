@@ -14,7 +14,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #F5F0E8;
+      background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -22,41 +22,52 @@
     }
 
     .container {
-      background-color: #fff;
-      border-radius: 16px;
-      padding: 35px 30px;
-      width: 380px;
-      border: 2px solid #3D2000;
-      box-shadow: 6px 6px 0px #3D2000;
+      background-color: #132440;
+      border-radius: 18px;
+      padding: 40px 35px;
+      width: 420px;
     }
 
     h1 {
-      color: #3D2000;
-      margin-bottom: 5px;
-      font-size: 24px;
+      color: #fff;
+      margin-bottom: 6px;
+      font-size: 26px;
       font-weight: 700;
     }
 
-    p {
-      color: #999;
+    p.subtitle {
+      color: #aaa;
       font-size: 13px;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
     }
 
     .output-box {
-      background-color: #F5F0E8;
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin-bottom: 25px;
-      border: 1.5px solid #3D2000;
+      background-color: #16476A;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 8px;
     }
 
     #password-output {
-      color: #3D2000;
+      color: #fff;
       font-family: 'Courier New', monospace;
-      font-size: 17px;
+      font-size: 18px;
       word-break: break-all;
       display: block;
+    }
+
+    #copy-msg {
+      display: none;
+      color: #FDB5CE;
+      font-size: 12px;
+      margin-bottom: 18px;
+      margin-top: 6px;
+    }
+
+    #strength {
+      font-size: 13px;
+      margin-bottom: 22px;
+      color: #aaa;
     }
 
     .options {
@@ -67,7 +78,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #3D2000;
+      color: #ccc;
       font-size: 14px;
       margin-bottom: 14px;
       cursor: pointer;
@@ -76,14 +87,14 @@
     .options input[type="checkbox"] {
       width: 17px;
       height: 17px;
-      accent-color: #3D2000;
+      accent-color: #FDB5CE;
       cursor: pointer;
     }
 
     #generate-btn {
       width: 100%;
-      background-color: #3D2000;
-      color: #F5F0E8;
+      background-color: #FDB5CE;
+      color: #132440;
       border: none;
       padding: 13px;
       border-radius: 10px;
@@ -91,41 +102,46 @@
       font-weight: 700;
       cursor: pointer;
       font-family: 'Poppins', sans-serif;
+      transition: opacity 0.2s;
     }
 
     #generate-btn:hover {
-      background-color: #5a3000;
+      opacity: 0.85;
     }
+
     #clear-btn {
-    width: 100%;
-    background-color: transparent;
-    color: #3D2000;
-    border: 2px solid #3D2000;
-    padding: 11px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 10px;
-}
+      width: 100%;
+      background-color: transparent;
+      color: #FDB5CE;
+      border: 2px solid #FDB5CE;
+      padding: 11px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 10px;
+      transition: opacity 0.2s;
+    }
 
     #clear-btn:hover {
-    background-color: #F5F0E8;
-}
+      opacity: 0.75;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <h1>Password Generator</h1>
-    <p>Create a strong and secure password</p>
+    <p class="subtitle">Create a strong and secure password</p>
 
     <div class="output-box">
       <span id="password-output">Click generate...</span>
     </div>
-    <p id="copy-msg" style="display:none; color: #3D2000; font-size: 12px; margin-top: -18px; margin-bottom: 18px;">✅ Copied to clipboard!</p>
-    <p id="strength" style="font-size: 13px; margin-bottom: 18px;"></p>
+
+    <p id="copy-msg">✅ Copied to clipboard!</p>
+    <p id="strength"></p>
+
     <div class="options">
       <label>
         <input type="checkbox" id="opt-uppercase" checked>
@@ -144,39 +160,41 @@
     <button id="generate-btn">Generate Password</button>
     <button id="clear-btn">Clear</button>
   </div>
+
   <script>
-  document.getElementById('generate-btn').addEventListener('click', function() {
-    var length = 16;
-    var chars = 'abcdefghijklmnopqrstuvwxyz';
+    document.getElementById('generate-btn').addEventListener('click', function() {
+      var length = 16;
+      var chars = 'abcdefghijklmnopqrstuvwxyz';
 
-    if (document.getElementById('opt-uppercase').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if (document.getElementById('opt-numbers').checked) chars += '0123456789';
-    if (document.getElementById('opt-symbols').checked) chars += '!@#$%^&*';
+      if (document.getElementById('opt-uppercase').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (document.getElementById('opt-numbers').checked) chars += '0123456789';
+      if (document.getElementById('opt-symbols').checked) chars += '!@#$%^&*';
 
-    var password = '';
-    for (var i = 0; i < length; i++) {
-      password += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
+      var password = '';
+      for (var i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
 
-    document.getElementById('password-output').textContent = password;
-    navigator.clipboard.writeText(password);
-    var msg = document.getElementById('copy-msg');
-    msg.style.display = 'block';
-    setTimeout(function() { msg.style.display = 'none'; }, 2000);
+      document.getElementById('password-output').textContent = password;
+      navigator.clipboard.writeText(password);
+      var msg = document.getElementById('copy-msg');
+      msg.style.display = 'block';
+      setTimeout(function() { msg.style.display = 'none'; }, 2000);
 
-    var strength = '';
-    if (password.length >= 16 && chars.length > 60) strength = '💪 Strong';
-    else if (password.length >= 16 || chars.length > 40) strength = '👍 Medium';
-    else strength = '⚠️ Weak';
+      var strength = '';
+      if (password.length >= 16 && chars.length > 60) strength = '💪 Strong';
+      else if (password.length >= 16 || chars.length > 40) strength = '👍 Medium';
+      else strength = '⚠️ Weak';
 
-    document.getElementById('strength').textContent = strength;
-  });
+      document.getElementById('strength').textContent = strength;
+    });
 
-  document.getElementById('clear-btn').addEventListener('click', function() {
-    document.getElementById('password-output').textContent = 'Click generate...';
-    document.getElementById('copy-msg').style.display = 'none';
-    document.getElementById('strength').textContent = '';
-  });
-</script>
+    document.getElementById('clear-btn').addEventListener('click', function() {
+      document.getElementById('password-output').textContent = 'Click generate...';
+      document.getElementById('copy-msg').style.display = 'none';
+      document.getElementById('strength').textContent = '';
+    });
+  </script>
+
 </body>
 </html>
