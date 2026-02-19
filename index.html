@@ -96,6 +96,23 @@
     #generate-btn:hover {
       background-color: #5a3000;
     }
+    #clear-btn {
+    width: 100%;
+    background-color: transparent;
+    color: #3D2000;
+    border: 2px solid #3D2000;
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+    #clear-btn:hover {
+    background-color: #F5F0E8;
+}
   </style>
 </head>
 <body>
@@ -125,6 +142,7 @@
     </div>
 
     <button id="generate-btn">Generate Password</button>
+    <button id="clear-btn">Clear</button>
   </div>
   <script>
   document.getElementById('generate-btn').addEventListener('click', function() {
@@ -151,7 +169,13 @@
     else if (password.length >= 16 || chars.length > 40) strength = '👍 Medium';
     else strength = '⚠️ Weak';
 
-document.getElementById('strength').textContent = strength;
+    document.getElementById('strength').textContent = strength;
+  });
+
+  document.getElementById('clear-btn').addEventListener('click', function() {
+    document.getElementById('password-output').textContent = 'Click generate...';
+    document.getElementById('copy-msg').style.display = 'none';
+    document.getElementById('strength').textContent = '';
   });
 </script>
 </body>
